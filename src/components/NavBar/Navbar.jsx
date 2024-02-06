@@ -4,7 +4,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 
 const Navbar = () => {
-    const[open, setopen] = useState(false)
+    const[open, setOpen] = useState(false)
     const routes = [
         { id: 1, path: '/', name: 'Home' },
         { id: 2, path: '/about', name: 'About' },
@@ -15,14 +15,19 @@ const Navbar = () => {
       
       
     return (
-        <nav>
-        <div className="md:hidden text-2xl" onClick={()=> setopen(!open)}>
+        <nav className="text-black p-6">
+        <div className=" text-2xl" onClick={()=> setOpen(!open)}>
         {
             open === true ? <IoCloseCircle></IoCloseCircle> : <IoIosMenu className=""></IoIosMenu>
         }
         
         </div>
-            <ul className="md:flex">
+            <ul className={`md:flex duration-1000
+            
+            ${open ? 'top-16' : '-top-60'}
+            
+            bg-yellow-200 px-6 
+            `}>
                 {
                     routes.map(route => <Link key={route.id} route={route} ></Link>)
                 }
